@@ -3,8 +3,7 @@ steal('can',
 	'documentjs',
 	'jquery/build/lib.js')
 
-steal('steal/generate',
-	'steal/get',
+steal('steal','steal/generate',
 	'steal/build',
 	'steal/build/pluginify',
 	'steal/coffee',
@@ -29,5 +28,7 @@ steal('can/construct',
 	'can/util/fixture',
 	'can/view/modifiers',
 	'can/view/mustache')
+
+steal('can/util/func.js')
 
 // .then('canui')

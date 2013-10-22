@@ -1,5 +1,5 @@
 @page tutorials Tutorials
-@parent index 5
+@parent javascriptmvc 5
 
 @description Tutorials on JavaScriptMVC.
 
@@ -28,10 +28,6 @@ want to understand how they work together.
 
 jQuery++ is a collection of useful jQuery libraries that provide the missing 
 functionality necessary to implement and organize large-scale jQuery applications.
-
-### [tutorials.steal Get Started With StealJS] (in-progress)
-
-Walks through StealJS's features.
 
 ### [funcunit.getstarted Get Started with FuncUnit]
 

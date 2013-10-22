@@ -18,7 +18,7 @@ If you don't, you might find the following resources helpful:
 
 ## Git-ing JavaScriptMVC
 
-JavaScriptMVC is comprised of 6 sub projects:
+JavaScriptMVC is comprised of 7 sub projects:
 
  - [http://github.com/bitovi/steal]
  - [http://github.com/bitovi/canjs]
@@ -26,6 +26,7 @@ JavaScriptMVC is comprised of 6 sub projects:
  - [http://github.com/bitovi/documentjs]
  - [http://github.com/bitovi/funcunit]
  - [http://github.com/bitovi/syn]
+ - [https://github.com/bitovi/jmvc-generators]
 
 We're going to fork each of these projects and add them as submodules to your
 master git project.
@@ -38,11 +39,9 @@ the fork button (in the upper right of the page).
 
 @image site/images/fork.png
 
-<div class='whisper'>PRO TIP: 
-  If you're working for a company, you should create company forks and give 
-  employees access to the company forks.  This will keep everyone using the 
-  same version.
-</div>
+> TIP: If you're working for a company, you should create company forks and give 
+employees access to the company forks.  This will keep everyone using the 
+same version.
 
 #### Installing with a script
 
@@ -57,7 +56,8 @@ chmod 755 getjmvc
 Use this script to install JMVC from github or your own fork. If its already installed, it will get latest for all the submodules.  
 Assumes your project uses git.
 
-##### Options: 
+##### Options
+ 
  - -u username (default is bitovi)
  - -b branch (default is master)
  - -s source url (default is https://github.com)
@@ -116,6 +116,7 @@ git submodule add git@github.com:_YOU_/canjs.git public/<b>canjs</b>
 git submodule add git@github.com:_YOU_/jquerypp.git public/<b>jquerypp</b>
 git submodule add git@github.com:_YOU_/documentjs.git public/documentjs
 git submodule add git@github.com:_YOU_/funcunit.git public/funcunit
+git submodule add git@github.com:_YOU_/jmvc-generators.git public/jmvc
 @codeend
 
 _Note_: Learn a little more about submodules [here](http://johnleach.co.uk/words/archives/2008/10/12/323/git-submodules-in-n-easy-steps Submodules). 

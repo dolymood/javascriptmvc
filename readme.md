@@ -1,4 +1,4 @@
-@page index JavaScriptMVC
+@page javascriptmvc JavaScriptMVC
 
 <div class="top">
 	<div class="topCorner">
@@ -62,7 +62,6 @@ command-line and browser-based utilities enabling you to:
 
   - [steal load] JS, CSS, LESS, and CoffeeScript files and build them into a single production file.
   - [steal.generate generate] an application file/folder structure, complete with test, build and documentation scripts.
-  - [steal.get install] 3rd party dependencies.
   - [steal.clean clean and JSLint] your code.
   - make your Ajax app [steal.html crawlable].
   - log [steal.dev messages] in development that get removed in production builds.
@@ -71,7 +70,7 @@ command-line and browser-based utilities enabling you to:
 
 ## FuncUnit
 
-[funcunit FuncUnit] is a web application testing framework that provides automated unit and 
+[FuncUnit FuncUnit] is a web application testing framework that provides automated unit and 
 functional testing.  Tests are written and debugged in the browser with
 FuncUnit's short, terse, jQuery-like API.  The same tests can be instantly 
 automated, run by Envjs or Selenium.  

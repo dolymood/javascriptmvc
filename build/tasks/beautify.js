@@ -5,6 +5,7 @@
  * Copyright (c) 2012 Camille Moncelier
  * Licensed under the MIT license.
  */
+var beautifier = require('js-beautify');
 
 module.exports = function (grunt) {
 
@@ -18,8 +19,6 @@ module.exports = function (grunt) {
 	};
 
 	grunt.registerMultiTask('beautify', 'Javascript beautifier', function () {
-		var beautifier = require('node-beautify');
-
 		var options = null;
 		var tmp = grunt.config(['beautifier', this.target, 'options']);
 		if (typeof tmp === 'object') {
@@ -38,7 +37,13 @@ module.exports = function (grunt) {
 
 		// Beautify specified files.
 		var excludes = grunt.config(['beautifier', this.target, 'exclude']);
-		grunt.file.expandFiles(this.file.src).filter(function (file) {
+
+		grunt.file.expand(this.filesSrc).filter(function (file) {
+			if(/\.min\./.test(file)) {
+				grunt.log.writeln('Not beautifying ' + file);
+				return false;
+			}
+
 			for (var i = 0; i < excludes.length; i++) {
 				if (excludes[i].test(file)) {
 					grunt.log.writeln('Not beautifying ' + file);
@@ -48,7 +53,7 @@ module.exports = function (grunt) {
 			return true;
 		}).forEach(function (filepath) {
 				grunt.log.writeln('Beautifying ' + filepath);
-				var result = beautifier.beautifyJs(grunt.file.read(filepath), options);
+				var result = beautifier(grunt.file.read(filepath), options);
 				grunt.file.write(filepath, result);
 			});
 

@@ -1,6 +1,8 @@
 @page cookbook.testing Testing Cookbook
 @parent getstarted 1
 
+@body
+
 JavaScriptMVC puts a tremendous emphasis on 
 testing. It uses [FuncUnit] to easily write 
 tests that can be run in the browser or automated. FuncUnit
@@ -21,18 +23,55 @@ guide will show you how to:
 
 ## Run Tests
 
+Open `cookbook/cookbook_test.js`.  You'll notice it steals tests 
+for the model and controls.  There 
+are also tests that verify the 
+original "Welcome to JavaScriptMVC" text that we removed.  __Remove__ the 
+extraneous test so `cookbook_test.js` just looks like this:
+
+@codestart
+steal(
+	'funcunit',
+	'./models/recipe_test.js',
+	'cookbook/recipe/create/create_test.js',
+	'cookbook/recipe/list/list_test.js',
+	function (S) {
+
+	// this tests the assembly 
+	module("cookbook", {
+		setup : function () {
+			S.open("//cookbook/index.html");
+		}
+	});
+
+	test("creating a recipes adds it to the list ", function () {
+		
+		S("[name=name]").type("Ice Water");
+		S("[name=description]")
+		  .type("Pour water in a glass. Add ice cubes.");
+		
+		S("[type=submit]").click();
+		
+		S("h3:contains(Ice Water)").exists();
+		S("p:contains(Pour water in a glass. Add ice cubes.)").exists()
+	});
+});
+@codeend
+
 To run all of __cookbook's__ tests, open
-`cookbook/test.html` in a browser. You should
-see something like [//cookbook/test.html this].
+`cookbook/test.html` in a browser.
 
-To run those same tests with [funcunit.selenium Selenium], run:
+To run those same tests with [funcunit.selenium Selenium], first you must set up a 
+local server, like Apache, running at the javascriptmvc root.  Make sure you can 
+open your test page from this server, at a URL like http://localhost/javascriptmvc/cookbook/test.html.
 
+Then run:
 
-    > ./js funcunit/open/selenium cookbook/test.html
+    > ./js funcunit/open/selenium http://localhost/javascriptmvc/cookbook/test.html
 
 You should see something like:
 
-@image tutorials/getstarted/selenium-run.png
+@image ../tutorials/getstarted/selenium-run.png
 
 <div class='whisper'>
 	If Selenium is unable to open your browsers, it's likely you have them in an
@@ -47,7 +86,7 @@ this code works.
 
 If an application should be built of small, isolated modules that are glued together, its tests should reflect that.
 
-Cookbook's modules are each designed to be built and tested independently. For example, the `cookbook/recipe/create` module has its own tests and test page. Open [//cookbook/recipe/create/test.html cookbook/recipe/create/test.html]
+Cookbook's modules are each designed to be built and tested independently. For example, the `cookbook/recipe/create` module has its own tests and test page. Open `cookbook/recipe/create/test.html`
 and it will run the tests in  `cookbook/recipe/create/create_test.js`.
 
 To test the "glue", `cookbook_test.js` loads all modules' tests 

@@ -1,10 +1,12 @@
 @page cookbook.creating Creating Cookbook
 @parent getstarted 0
 
+@body
+
 We're going to create a basic cookbook application that
 lets us create, and delete recipes. It will look like:
 
-@image tutorials/getstarted/Cookbook.png
+@image ../tutorials/getstarted/Cookbook.png
 
 </br>
 We'll use JavaScriptMVC's [steal.generate generator scripts] to
@@ -56,10 +58,10 @@ page followed by `?cookbook` like:
             src='../path/to/steal/steal.js?cookbook'>
     </script>
 
-If you open [//cookbook/index.html], you'll see a
+If you open //cookbook/index.html, you'll see a
 JavaScriptMVC welcome screen.  
 
-@image tutorials/getstarted/Welcome.png
+@image ../tutorials/getstarted/Welcome.png
 
 <br/>Open `cookbook/index.html` and you will find:
 
@@ -153,15 +155,33 @@ and `cookbook/recipe/list` and then tries to add these widgets to the
 However, `#recipes` and `#create` elements did not 
 exist! Fortunately, the generator also added their HTML to `index.html` so that 
 it includes:
-          
+
+    <h2>Recipes</h2>
+    <ul id='recipes'></ul>
+    <form id='create'></form>
+
+Remove all other generated parts of the `index.html` page so it just looks like:
+
+    <!DOCTYPE HTML>
+    <html lang="en">
+        <head>
+            <title>cookbook</title>
+        </head>
+        <body>
+            <h2>Recipes</h2>
+            <ul id='recipes'></ul>
+            <form id='create'></form>
+            <script type='text/javascript' src='../steal/steal.js?cookbook'></script>
+        </body>
+    </html>
 
 ## Run Cookbook
 
 
 That's it. You've created a simple Cookbook 
-application. Open cookbook/cookbook.html in a browser. 
+application. Open cookbook/index.html in a browser. 
 
-@image tutorials/getstarted/Cookbook.png
+@image ../tutorials/getstarted/Cookbook.png
 
 <div style='background-color: #dddddd;  margin: 20px 0px;padding: 20px'>
 <p>
@@ -262,7 +282,7 @@ where fixtures come in.
 
 ### The Recipe Fixture
 
-[can.fixture Fixtures] intercept Ajax requests and
+[can.fixture Fixtures] intercept AJAX requests and
 simulate the response. They enable
 you to start work on the front end without a ready server.
 
@@ -411,7 +431,7 @@ the inner html of the `controls` element:
     <% }) %>
 
 In the template, `this` is `this.list`. `this.list` is initially empty so
-the inner html of `this.element` is empty. The [can.Observe.List::replace list.replace](items)
+the inner html of `this.element` is empty. The [can.Observe.List.prototype.replace replace]
 method replaces the contents of the list with `items`.  If `items` is a
 [can.deferred deferred], it replaces the contents of the list with the
 resolved value of the deferred.
